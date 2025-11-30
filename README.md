@@ -1,8 +1,8 @@
 # TicketIn - Modern E-Ticketing Event System
 
-![TicketIn Banner](public/img/concert.jpeg)
+![TicketIn Banner](public/img/ticketin.jpg)
 
-**TicketIn** adalah platform manajemen acara dan pemesanan tiket (e-ticketing) berbasis web yang dirancang untuk memfasilitasi interaksi antara Admin, Event Organizer, dan Pengunjung. Dibangun dengan **Laravel 12**, aplikasi ini menawarkan solusi lengkap mulai dari pembuatan acara, manajemen tiket dinamis, sistem approval organizer, hingga laporan penjualan real-time dengan antarmuka modern dan responsif.
+**TicketIn** adalah platform manajemen acara dan pemesanan tiket (e-ticketing) berbasis web yang dirancang untuk memfasilitasi untuk mengelola acara (event) yang memungkinkan admin, event organizer, dan pengunjung untuk berinteraksi dengan mudah dalam manajemen acara dan pemesanan tiket. Dibangun dengan Laravel 12, pada aplikasi ini admin memiliki akses penuh untuk mengelola acara, pengguna, dan melihat laporan penjualan, sementara organizer dapat menambah, memperbarui, serta melihat pemesanan untuk acara mereka. Pengunjung terdaftar dapat memesan tiket, melihat riwayat pemesanan, serta menyimpan acara favorit.
 
 ---
 
@@ -12,7 +12,7 @@
 - [Persyaratan Sistem](#-persyaratan-sistem)
 - [Instalasi & Konfigurasi](#-instalasi--konfigurasi)
 - [Panduan Penggunaan (User Guide)](#-panduan-penggunaan-user-guide)
-- [Struktur Proyek)](#-project-structure)
+- [Struktur Proyek](#-project-structure)
 - [Lisensi](#-lisensi)
 
 ---
@@ -78,7 +78,7 @@ cd ticketin
 ### 2. Install Dependencies
 
 ```bash
-#Install paket PHP dan JavaScript yang dibutuhkan.
+# Install paket PHP dan JavaScript yang dibutuhkan.
 composer install
 npm install
 ```
@@ -229,6 +229,14 @@ ticketin/
 ├── package.json
 └── README.md
 ```
+
+---
+
+## Lisensi
+- Desain UI: Custom Tailwind CSS dengan tema Glassmorphism.
+- Icons: Heroicons (via SVG).
+- Font: Poppins (Google Fonts).
+- Images: Aset Pribadi (Disimpan di folder public/img).
 
 <div align="center">
 &copy; 2025 TicketIn. All rights reserved.
