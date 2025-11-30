@@ -17,7 +17,7 @@
 
 ---
 
-## 🌟 Fitur Utama
+## ⚙️ Fitur Utama
 
 ### 1. Multi-User & Role Management
 - **Admin:** Superuser dengan kontrol penuh (CRUD User, Approve Organizer, Hapus Paksa Event, Laporan Global).
@@ -36,10 +36,10 @@
 - **Tiket Digital:** E-Ticket otomatis terbit setelah disetujui, dilengkapi QR Code simulasi dan fitur cetak (Print-friendly).
 
 ### 4. Review & Rating
-- Sistem ulasan yang **jujur**: Hanya pengguna yang telah membeli tiket dan statusnya *Approved* yang bisa memberikan rating bintang dan komentar.
+- **Sistem ulasan**: Hanya pengguna yang telah membeli tiket dan statusnya *Approved* yang bisa memberikan rating bintang dan komentar.
 
 ### 5. Laporan & Analitik
-- **Dashboard Statistik:** Ringkasan visual total pendapatan dan tiket terjual.
+- **Dashboard analitik:** Ringkasan visual total pendapatan dan tiket terjual.
 - **Laporan Detail:** Tabel rinci per event untuk Organizer dan Admin.
 
 ---
@@ -49,7 +49,7 @@
 - **Backend:** Laravel 12 (PHP Framework)
 - **Database:** MySQL
 - **Frontend:** Blade Templating, Tailwind CSS (v3)
-- **Scripting:** Alpine.js (untuk interaktivitas ringan seperti dropdown & modal)
+- **Scripting:** Alpine.js
 - **Authentication:** Laravel Breeze
 
 ---
@@ -172,10 +172,66 @@ Setelah anda menjalankan seeder, login dengan akun berikut.
 
 ---
 
-
+## 💾 Struktur Proyek
+```
+ticketin/
+├── app/
+│   ├── Http/
+│   │   ├── Controllers/
+│   │   │   ├── Admin/
+│   │   │   │   └── AdminEventController.php
+│   │   │   │   └── AdminUserController.php
+│   │   │   ├── Auth/                  
+│   │   │   ├── Organizer/             
+│   │   │   │   ├── OrganizerEventController.php
+│   │   │   │   ├── OrganizerReportController.php
+│   │   │   │   └── OrganizerStatusController.php
+│   │   │   ├── BookingController.php
+│   │   │   ├── DashboardController.php
+│   │   │   ├── FavoriteController.php
+│   │   │   ├── HomeController.php
+│   │   │   ├── ProfileController.php
+│   │   │   └── ReviewController.php 
+│   │   └── Middleware/
+│   │       ├── EnsureOrganizerActive.php
+│   │       └── RoleMiddleware.php
+│   │   └── Requests/
+│   └── Models/
+│       ├── Booking.php
+│       ├── Event.php
+│       ├── Review.php
+│       ├── Ticket.php
+│       └── User.php
+├── database/
+│   ├── migrations/
+│   └── seeders/
+│       └── DatabaseSeeder.php
+├── resources/
+│   ├── css/
+│   ├── js/
+│   ├── views/
+│   │   ├── admin/
+│   │   ├── auth/
+│   │   ├── bookings/
+│   │   ├── components/
+│   │   ├── events/
+│   │   ├── favorites/
+│   │   ├── layouts/
+│   │   ├── organizer/
+│   │   ├── profile/
+│   │   ├── dashboard.blade.php
+│   │   └── home.blade.php
+├── routes/
+│   ├── web.php
+│   └── auth.php
+├── .env.example
+├── composer.json
+├── package.json
+└── README.md
+```
 
 <div align="center">
-<p>&copy; 2025 Ticket</span>In. All rights reserved.</p>
+&copy; 2025 TicketIn. All rights reserved.
 </div>
 
 
