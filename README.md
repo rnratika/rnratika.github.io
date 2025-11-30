@@ -1,43 +1,187 @@
-# Chirpy Starter
+# TicketIn - Modern E-Ticketing Event System
 
-[![Gem Version](https://img.shields.io/gem/v/jekyll-theme-chirpy)][gem]&nbsp;
-[![GitHub license](https://img.shields.io/github/license/cotes2020/chirpy-starter.svg?color=blue)][mit]
+![TicketIn Banner](public/img/concert.jpeg)
 
-When installing the [**Chirpy**][chirpy] theme through [RubyGems.org][gem], Jekyll can only read files in the folders
-`_data`, `_layouts`, `_includes`, `_sass` and `assets`, as well as a small part of options of the `_config.yml` file
-from the theme's gem. If you have ever installed this theme gem, you can use the command
-`bundle info --path jekyll-theme-chirpy` to locate these files.
+**TicketIn** adalah platform manajemen acara dan pemesanan tiket (e-ticketing) berbasis web yang dirancang untuk memfasilitasi interaksi antara Admin, Event Organizer, dan Pengunjung. Dibangun dengan **Laravel 12**, aplikasi ini menawarkan solusi lengkap mulai dari pembuatan acara, manajemen tiket dinamis, sistem approval organizer, hingga laporan penjualan real-time dengan antarmuka modern dan responsif.
 
-The Jekyll team claims that this is to leave the ball in the user’s court, but this also results in users not being
-able to enjoy the out-of-the-box experience when using feature-rich themes.
+---
 
-To fully use all the features of **Chirpy**, you need to copy the other critical files from the theme's gem to your
-Jekyll site. The following is a list of targets:
+## 📋 Daftar Isi
+- [Fitur Utama](#-fitur-utama)
+- [Teknologi yang Digunakan](#-teknologi-yang-digunakan)
+- [Persyaratan Sistem](#-persyaratan-sistem)
+- [Instalasi & Konfigurasi](#-instalasi--konfigurasi)
+- [Panduan Penggunaan (User Guide)](#-panduan-penggunaan-user-guide)
+- [Struktur Proyek)](#-project-structure)
+- [Lisensi](#-lisensi)
 
-```shell
-.
-├── _config.yml
-├── _plugins
-├── _tabs
-└── index.html
+---
+
+## 🌟 Fitur Utama
+
+### 1. Multi-User & Role Management
+- **Admin:** Superuser dengan kontrol penuh (CRUD User, Approve Organizer, Hapus Paksa Event, Laporan Global).
+- **Event Organizer (EO):** Manajemen acara mandiri, monitoring penjualan, approval peserta manual.
+- **User:** Pencarian acara, booking tiket, riwayat transaksi, tiket digital, dan sistem favorit.
+- **Guest:** Akses publik untuk melihat katalog acara.
+
+### 2. Manajemen Acara Canggih
+- **Multi-Ticket System:** Satu acara bisa memiliki banyak jenis tiket (VIP, Regular, Early Bird) dengan harga dan kuota berbeda.
+- **Rich Event Details:** Deskripsi lengkap, lokasi, waktu, dan banner visual.
+- **Validasi Ketat:** Mencegah overbooking dan input data yang tidak valid.
+
+### 3. Sistem Booking & Approval
+- **Alur Transaksi Aman:** Booking mengurangi kuota secara *real-time* (Database Transaction).
+- **Manual Approval:** Organizer memiliki kendali penuh untuk menyetujui atau menolak pesanan masuk.
+- **Tiket Digital:** E-Ticket otomatis terbit setelah disetujui, dilengkapi QR Code simulasi dan fitur cetak (Print-friendly).
+
+### 4. Review & Rating
+- Sistem ulasan yang **jujur**: Hanya pengguna yang telah membeli tiket dan statusnya *Approved* yang bisa memberikan rating bintang dan komentar.
+
+### 5. Laporan & Analitik
+- **Dashboard Statistik:** Ringkasan visual total pendapatan dan tiket terjual.
+- **Laporan Detail:** Tabel rinci per event untuk Organizer dan Admin.
+
+---
+
+## 🛠 Teknologi yang Digunakan
+
+- **Backend:** Laravel 12 (PHP Framework)
+- **Database:** MySQL
+- **Frontend:** Blade Templating, Tailwind CSS (v3)
+- **Scripting:** Alpine.js (untuk interaktivitas ringan seperti dropdown & modal)
+- **Authentication:** Laravel Breeze
+
+---
+
+## 💻 Persyaratan Sistem
+
+Sebelum memulai, pastikan sistem Anda memenuhi syarat berikut:
+- PHP >= 8.2
+- Composer
+- Node.js & NPM
+- MySQL Database
+
+---
+
+## 🚀 Instalasi & Konfigurasi
+
+Ikuti langkah-langkah ini untuk menjalankan proyek di komputer lokal Anda:
+
+### 1. Clone Repository
+
+```bash
+git clone https://github.com/rnratika/ticketin.git
+cd ticketin
 ```
 
-To save you time, and also in case you lose some files while copying, we extract those files/configurations of the
-latest version of the **Chirpy** theme and the [CD][CD] workflow to here, so that you can start writing in minutes.
+### 2. Install Dependencies
 
-## Usage
+```bash
+#Install paket PHP dan JavaScript yang dibutuhkan.
+composer install
+npm install
+```
+### 3. Konfigurasi Environment
 
-Check out the [theme's docs](https://github.com/cotes2020/jekyll-theme-chirpy/wiki).
+Salin file .env.example menjadi .env dan sesuaikan konfigurasi database Anda.
+```bash
+cp .env.example .env
+```
 
-## Contributing
+Buka file .env dan ubah bagian ini:
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=ticketin_db
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
+```
+### 4. Generate Key & Migrate
 
-This repository is automatically updated with new releases from the theme repository. If you encounter any issues or want to contribute to its improvement, please visit the [theme repository][chirpy] to provide feedback.
+```bash
+php artisan key:generate
+php artisan migrate:fresh --seed
+php artisan storage:link
+```
 
-## License
+### 5. Jalankan Aplikasi
 
-This work is published under [MIT][mit] License.
+```bash
+# Build Frontend
+npm run dev
 
-[gem]: https://rubygems.org/gems/jekyll-theme-chirpy
-[chirpy]: https://github.com/cotes2020/jekyll-theme-chirpy/
-[CD]: https://en.wikipedia.org/wiki/Continuous_deployment
-[mit]: https://github.com/cotes2020/chirpy-starter/blob/master/LICENSE
+# Jalankan Server)
+php artisan serve
+```
+Akses aplikasi di browser melalui: http://127.0.0.1:8000
+
+---
+
+## 📖 Panduan Penggunaan (User Guide)
+
+### A. Login Akun Demo
+
+Setelah anda menjalankan seeder, login dengan akun berikut.
+
+**Super Admin:** 
+- email: admin@ticketin.com
+- password : password
+
+**Event Organizer:** 
+- email: eo@ticketin.com
+- password : password
+
+**User:** 
+- email: usero@ticketin.com
+- password : password
+
+### B. Alur Kerja Utama (Workflow)
+
+**1. Registrasi Event Organizer (EO) Baru**
+- Buka halaman Register.
+- Isi data diri dan pilih "Daftar Sebagai: Event Organizer".
+- Setelah daftar, Anda akan diarahkan ke halaman "Menunggu Persetujuan".
+- Login sebagai Admin -> Masuk ke menu Users -> Klik Approve pada user tersebut.
+- EO baru sekarang bisa login dan membuat event.
+
+**2. Membuat Acara (Organizer)**
+- Login sebagai Organizer.
+- Masuk ke menu My Events -> Klik Buat Event Baru.
+- Isi detail acara, upload banner, dan tambahkan jenis tiket (bisa lebih dari satu).
+- Klik Simpan. Acara langsung tayang di halaman depan.
+
+**3. Memesan Tiket (User)**
+- Login sebagai User.
+- Pilih acara di Halaman Depan -> Klik Beli Tiket.
+- Masukkan jumlah tiket -> Klik Beli.
+- Status pesanan akan menjadi Pending.
+
+**4. Verifikasi Pesanan (Organizer)**
+- Organizer melihat notifikasi/laporan di menu Sales atau My Events.
+- Klik tombol Lihat Peserta pada event terkait.
+- Klik Approve (Centang Hijau) untuk menerima pesanan.
+- Stok tiket otomatis berkurang permanen.
+
+**5. Mengakses Tiket Digital (User)**
+- User kembali ke menu My Tickets.
+- Status berubah menjadi Berhasil.
+- Klik tombol Lihat E-Ticket.
+- Tiket digital dengan QR Code muncul dan siap dicetak (Klik tombol "Cetak Tiket").
+
+---
+
+
+
+<div align="center">
+<p>&copy; {{ date('Y') }} <span class="text-[#E73812] font-semibold">Ticket</span>In. All rights reserved.</p>
+</div>
+
+
+
+
+
+
+
+
