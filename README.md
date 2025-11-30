@@ -112,7 +112,7 @@ php artisan storage:link
 # Build Frontend
 npm run dev
 
-# Jalankan Server)
+# Jalankan Server
 php artisan serve
 ```
 Akses aplikasi di browser melalui: http://127.0.0.1:8000
@@ -134,7 +134,7 @@ Setelah anda menjalankan seeder, login dengan akun berikut.
 - password : password
 
 **User:** 
-- email: usero@ticketin.com
+- email: user@ticketin.com
 - password : password
 
 ### B. Alur Kerja Utama (Workflow)
@@ -232,7 +232,7 @@ ticketin/
 
 ---
 
-## Lisensi
+## 🔖 Lisensi
 - Desain UI: Custom Tailwind CSS dengan tema Glassmorphism.
 - Icons: Heroicons (via SVG).
 - Font: Poppins (Google Fonts).
