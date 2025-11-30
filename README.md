@@ -175,7 +175,7 @@ Setelah anda menjalankan seeder, login dengan akun berikut.
 
 
 <div align="center">
-<p>&copy; {{ date('Y') }} <span class="text-[#E73812] font-semibold">Ticket</span>In. All rights reserved.</p>
+<p>&copy; 2025 Ticket</span>In. All rights reserved.</p>
 </div>
 
 
